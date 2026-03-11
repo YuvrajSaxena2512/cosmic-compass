@@ -209,7 +209,7 @@ export const generateReport = (name: string, dob: string): ReportSection[] => {
         `Karmic Lessons: Your number pattern suggests past-life themes around ${lifePathNum <= 3 ? "self-expression and creative courage" : lifePathNum <= 6 ? "responsibility, service, and unconditional love" : "spiritual wisdom, trust, and letting go of control"}.`,
         "These numbers combined suggest a life of meaningful impact, spiritual evolution, and continuous growth.",
         "Align your daily choices with these numbers for enhanced flow and synchronicity — notice when these numbers appear in your life as cosmic confirmations.",
-        "Master Number Influence: ${lifePathNum === 1 || lifePathNum === 2 ? "You carry echoes of Master Number 11 — heightened intuition and spiritual awareness" : lifePathNum === 4 || lifePathNum === 8 ? "You resonate with Master Number 22 — the Master Builder energy of manifesting grand visions" : "You connect with Master Number 33 — the Master Teacher energy of healing and uplifting others"}.",
+        `Master Number Influence: ${lifePathNum === 1 || lifePathNum === 2 ? "You carry echoes of Master Number 11 — heightened intuition and spiritual awareness" : lifePathNum === 4 || lifePathNum === 8 ? "You resonate with Master Number 22 — the Master Builder energy of manifesting grand visions" : "You connect with Master Number 33 — the Master Teacher energy of healing and uplifting others"}.`,
       ],
     },
     {
