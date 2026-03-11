@@ -224,7 +224,7 @@ export const generateReport = (name: string, dob: string): ReportSection[] => {
         `Planetary Strength: Your strongest houses are the ${(month % 3) + 1}st, ${(month % 3) + 5}th, and ${(month % 3) + 9}th houses — governing ${(month % 3) === 0 ? "self, creativity, and philosophy" : (month % 3) === 1 ? "wealth, partnerships, and transformation" : "communication, service, and career"}.`,
         "Dasha Period: Your current planetary period favors focused effort in career and personal development — use this energy wisely.",
         "Yogas in Your Chart: Positive yogas indicate potential for material success, intellectual achievement, and spiritual growth.",
-        "Manglik Status: Your chart ${day % 2 === 0 ? "shows mild Manglik influence — easily balanced through awareness and compatible partnerships" : "is largely free from Manglik effects — relationships flow with greater ease"}.",
+        `Manglik Status: Your chart ${day % 2 === 0 ? "shows mild Manglik influence — easily balanced through awareness and compatible partnerships" : "is largely free from Manglik effects — relationships flow with greater ease"}.`,
         "Understanding your Kundli helps you navigate challenges with cosmic awareness and make decisions aligned with your highest potential.",
       ],
     },
