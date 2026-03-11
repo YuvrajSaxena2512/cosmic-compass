@@ -123,7 +123,7 @@ export const generateReport = (name: string, dob: string): ReportSection[] => {
         "Your emotional triggers often connect to themes of security, recognition, and belonging — understanding these patterns is liberating.",
         "Emotional Superpower: Your ability to sense others' emotional states gives you a rare gift in relationships and creative pursuits.",
         "Stress Response Pattern: Under pressure, you tend to withdraw inward first, process deeply, then emerge with clarity — honor this natural rhythm.",
-        "Nurturing Style: You show love through ${moonElement === "Water" ? "deep emotional presence and empathetic listening" : moonElement === "Earth" ? "practical acts of service and creating stability" : moonElement === "Fire" ? "enthusiastic encouragement and protective loyalty" : "stimulating conversation and mental connection"}.",
+        `Nurturing Style: You show love through ${moonElement === "Water" ? "deep emotional presence and empathetic listening" : moonElement === "Earth" ? "practical acts of service and creating stability" : moonElement === "Fire" ? "enthusiastic encouragement and protective loyalty" : "stimulating conversation and mental connection"}.`,
         "Create sacred spaces for solitude to recharge your emotional energy — nature, meditation, and creative expression are your best healing tools.",
         "Your Moon sign suggests a strong connection to your mother or maternal figures — these relationships hold important life lessons for you.",
       ],
