@@ -157,7 +157,7 @@ export const generateReport = (name: string, dob: string): ReportSection[] => {
         "Side Hustle Potential: Your chart strongly supports building income streams through content creation, consulting, or digital products.",
         `Career Timing: A major breakthrough is indicated ${currentAge < 30 ? "in your late 20s to early 30s" : currentAge < 40 ? "within the next 2-3 years" : "in this current phase"} — stay open to unexpected opportunities and be ready to pivot.`,
         "Avoid Career Trap: Don't settle for financial security alone — your soul needs purpose-driven work to truly thrive and avoid burnout.",
-        "Your planetary ruler suggests peak productivity hours in the ${sunElement === "Fire" ? "morning (6am–12pm)" : sunElement === "Earth" ? "mid-morning to afternoon (9am–3pm)" : sunElement === "Air" ? "afternoon to evening (2pm–8pm)" : "late evening to night (8pm–2am)"}.",
+        `Your planetary ruler suggests peak productivity hours in the ${sunElement === "Fire" ? "morning (6am–12pm)" : sunElement === "Earth" ? "mid-morning to afternoon (9am–3pm)" : sunElement === "Air" ? "afternoon to evening (2pm–8pm)" : "late evening to night (8pm–2am)"}.`,
       ],
     },
     {
