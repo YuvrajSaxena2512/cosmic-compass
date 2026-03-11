@@ -1,12 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Starfield from "@/components/Starfield";
+import HeroSection from "@/components/HeroSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import BirthForm from "@/components/BirthForm";
+import CosmicLoader from "@/components/CosmicLoader";
+import Footer from "@/components/Footer";
+import type { FormData } from "@/components/BirthForm";
 
 const Index = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = (data: FormData) => {
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/report", { state: { formData: data } });
+    }, 3000);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="relative min-h-screen overflow-hidden">
+      <Starfield />
+      {loading && <CosmicLoader />}
+      <HeroSection />
+      <div id="features">
+        <FeaturesSection />
       </div>
+      <BirthForm onSubmit={handleSubmit} />
+      <Footer />
     </div>
   );
 };
