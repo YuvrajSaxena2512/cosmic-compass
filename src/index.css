@@ -244,15 +244,14 @@
 
 /* PDF mode - triggered during PDF generation */
 .pdf-mode {
-  background: white !important;
-  color: #111111 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
 }
 
 .pdf-mode * {
-  color: #111111 !important;
+  color: #000000 !important;
+  opacity: 1 !important;
   text-shadow: none !important;
-  box-shadow: none !important;
-  background-color: transparent !important;
 }
 
 .pdf-mode .glow-text {
@@ -283,8 +282,8 @@
 
 /* Report section - each major section starts on new page */
 .report-section {
-  page-break-before: always;
-  break-before: page;
+  break-inside: avoid;
+  margin-bottom: 30px;
 }
 
 .report-section:first-child {

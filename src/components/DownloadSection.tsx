@@ -35,15 +35,12 @@ const DownloadSection = ({ userName = "LifeMap Report" }: DownloadSectionProps) 
 
       // Configure PDF options for high quality output
       const options = {
-        margin: [15, 15] as [number, number],  // [top/bottom, left/right] in mm
+        margin: 10,                           // Margin in mm
         filename: "LifeMap_Report.pdf",     // Output filename
         image: { type: "jpeg" as const, quality: 1 },  // Maximum quality
         html2canvas: {
-          scale: 3,                         // 3x scale for maximum clarity
+          scale: 2,                         // 2x scale for clarity
           useCORS: true,                    // Handle cross-origin images
-          scrollY: 0,                       // Capture from top
-          logging: false,                   // Suppress logging
-          backgroundColor: "#ffffff",       // White background for PDF
         },
         jsPDF: {
           unit: "mm",                       // Unit: millimeters
@@ -51,7 +48,7 @@ const DownloadSection = ({ userName = "LifeMap Report" }: DownloadSectionProps) 
           orientation: "portrait" as const, // Portrait orientation
         },
         pagebreak: {
-          mode: ["css", "legacy"],          // Use CSS and legacy page-break rules
+          mode: ["avoid-all"],              // Avoid blank pages
         },
       };
 
