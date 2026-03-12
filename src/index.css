@@ -281,6 +281,17 @@
   break-inside: avoid;
 }
 
+/* Report section - each major section starts on new page */
+.report-section {
+  page-break-before: always;
+  break-before: page;
+}
+
+.report-section:first-child {
+  page-break-before: auto;
+  break-before: auto;
+}
+
 @media print {
   .page-section {
     page-break-inside: avoid;
