@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+/* PDF page control */
+
+.pdf-mode .report-section {
+  page-break-before: always;
+  break-before: page;
+}
+
+.pdf-mode .report-section:first-child {
+  page-break-before: auto;
+}
