@@ -2,10 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Starfield from "@/components/Starfield";
 import ReportCard from "@/components/ReportCard";
-import ShareSection from "@/components/ShareSection";
+import DownloadSection from "@/components/DownloadSection";
 import Footer from "@/components/Footer";
 import { generateReport } from "@/lib/reportGenerator";
-import { MapPin, RotateCcw, Sparkles } from "lucide-react";
+import { MapPin, RotateCcw } from "lucide-react";
 
 const Report = () => {
   const location = useLocation();
@@ -25,43 +25,34 @@ const Report = () => {
     <div className="relative min-h-screen overflow-hidden">
       <Starfield />
 
-      {/* Header */}
-      <header className="relative z-10 py-6 px-4 text-center">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <MapPin className="w-6 h-6 text-accent" />
-          <span className="font-display font-bold text-xl">LifeMap</span>
-        </div>
-        <h2 className="font-display text-2xl md:text-3xl font-bold glow-text">
-          Your LifeMap Report
-        </h2>
-        <p className="text-muted-foreground text-sm mt-1">
-          Cosmic blueprint for <span className="text-foreground font-medium">{formData.fullName}</span>
-        </p>
-      </header>
+      {/* PDF Capture Container - includes everything that should be in the PDF */}
+      <div id="lifemap-report" className="relative">
+        {/* Header */}
+        <header className="relative z-10 py-6 px-4 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <MapPin className="w-6 h-6 text-accent" />
+            <span className="font-display font-bold text-xl">LifeMap</span>
+          </div>
+          <h2 className="font-display text-2xl md:text-3xl font-bold glow-text">
+            Your LifeMap Report
+          </h2>
+          <p className="text-muted-foreground text-sm mt-1">
+            Cosmic blueprint for <span className="text-foreground font-medium">{formData.fullName}</span>
+          </p>
+        </header>
 
-      {/* Report Cards */}
-      <main className="relative z-10 px-4 pb-12">
-        <div className="container max-w-2xl mx-auto space-y-5">
-          {sections.map((section, i) => (
-            <ReportCard key={section.title} section={section} index={i} />
-          ))}
-        </div>
-      </main>
+        {/* Report Cards */}
+        <main className="relative z-10 px-4 pb-12">
+          <div className="container max-w-2xl mx-auto space-y-5">
+            {sections.map((section, i) => (
+              <ReportCard key={section.title} section={section} index={i} />
+            ))}
+          </div>
+        </main>
+      </div>
 
-      {/* Ready Message Section */}
-      <section className="relative z-10 py-8 px-4 text-center">
-        <div className="flex items-center justify-center gap-2 text-accent mb-2">
-          <Sparkles className="w-5 h-5" />
-          <span className="font-display font-bold text-lg">Your LifeMap is ready</span>
-          <Sparkles className="w-5 h-5" />
-        </div>
-        <p className="text-muted-foreground text-sm">
-          Your cosmic blueprint has been generated. Now it's time to share your insights.
-        </p>
-      </section>
-
-      {/* Share Section - NEW sharing feature */}
-      <ShareSection userName={formData.fullName} url={window.location.href} />
+      {/* Download Section - outside PDF container */}
+      <DownloadSection userName={formData.fullName} />
 
       {/* CTA Section */}
       <section className="relative z-10 py-16 px-4 text-center">
