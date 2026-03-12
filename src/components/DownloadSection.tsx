@@ -14,6 +14,7 @@ const DownloadSection = ({ userName = "LifeMap Report" }: DownloadSectionProps) 
   /**
    * Download the LifeMap report as a PDF
    * Captures the entire report section and converts it to PDF
+   * Applies temporary pdf-mode styling for better PDF readability
    */
   const downloadLifeMapPDF = async () => {
     try {
@@ -26,30 +27,31 @@ const DownloadSection = ({ userName = "LifeMap Report" }: DownloadSectionProps) 
         throw new Error("Report element not found");
       }
 
+      // Add pdf-mode class for print-friendly styling
+      reportElement.classList.add("pdf-mode");
+
       // Clone the element to avoid modifying the original
       const clonedElement = reportElement.cloneNode(true) as HTMLElement;
 
       // Configure PDF options for high quality output
       const options = {
-        margin: 10,                          // 10mm margins
-        filename: "lifemap-report.pdf",      // Output filename
-        image: { type: "jpeg" as const, quality: 0.98 },  // High quality images
+        margin: [15, 15] as [number, number],  // [top/bottom, left/right] in mm
+        filename: "LifeMap_Report.pdf",     // Output filename
+        image: { type: "jpeg" as const, quality: 1 },  // Maximum quality
         html2canvas: {
-          scale: 2,                          // Higher scale for better quality
-          useCORS: true,                     // Handle cross-origin images
-          allowTaint: true,                  // Allow tainted canvas
-          backgroundColor: "#0f0b18",        // Dark cosmic background
+          scale: 3,                         // 3x scale for maximum clarity
+          useCORS: true,                    // Handle cross-origin images
+          scrollY: 0,                       // Capture from top
+          logging: false,                   // Suppress logging
+          backgroundColor: "#ffffff",       // White background for PDF
         },
         jsPDF: {
-          unit: "mm",                        // Unit: millimeters
-          format: "a4",                      // Paper format
-          orientation: "portrait" as const,  // Portrait orientation
-          compress: true,                    // Enable compression
+          unit: "mm",                       // Unit: millimeters
+          format: "a4",                     // Paper format
+          orientation: "portrait" as const, // Portrait orientation
         },
         pagebreak: {
-          mode: "avoid-all",                 // Avoid breaking content
-          before: [],
-          after: [],
+          mode: ["css", "legacy"],          // Use CSS and legacy page-break rules
         },
       };
 
@@ -68,6 +70,11 @@ const DownloadSection = ({ userName = "LifeMap Report" }: DownloadSectionProps) 
         variant: "destructive",
       });
     } finally {
+      // Remove pdf-mode class after PDF generation
+      const reportElement = document.getElementById("lifemap-report");
+      if (reportElement) {
+        reportElement.classList.remove("pdf-mode");
+      }
       setIsLoading(false);
     }
   };

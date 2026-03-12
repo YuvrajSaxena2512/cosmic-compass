@@ -10,7 +10,7 @@ const ReportCard = ({ section, index }: ReportCardProps) => {
 
   return (
     <div
-      className="glass-card-glow p-6 animate-slide-up"
+      className="glass-card-glow page-section p-6 animate-slide-up"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       <div className="flex items-center gap-3 mb-4">

@@ -233,3 +233,62 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
 }
+
+/* PDF Export Styles */
+
+/* Report container - optimized for A4 page width */
+#lifemap-report {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* PDF mode - triggered during PDF generation */
+.pdf-mode {
+  background: white !important;
+  color: #111111 !important;
+}
+
+.pdf-mode * {
+  color: #111111 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.pdf-mode .glow-text {
+  text-shadow: none !important;
+}
+
+.pdf-mode .glass-card-glow {
+  background: #f9f9f9 !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: none !important;
+}
+
+.pdf-mode .glass-card {
+  background: #f9f9f9 !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: none !important;
+}
+
+.pdf-mode [style*="background"] {
+  background-color: transparent !important;
+}
+
+/* Page section - prevents breaking across pages */
+.page-section {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+@media print {
+  .page-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  #lifemap-report {
+    max-width: 100%;
+    margin: 0;
+  }
+}
