@@ -2,9 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Starfield from "@/components/Starfield";
 import ReportCard from "@/components/ReportCard";
+import ShareSection from "@/components/ShareSection";
 import Footer from "@/components/Footer";
 import { generateReport } from "@/lib/reportGenerator";
-import { MapPin, Share2, RotateCcw } from "lucide-react";
+import { MapPin, RotateCcw, Sparkles } from "lucide-react";
 
 const Report = () => {
   const location = useLocation();
@@ -19,16 +20,6 @@ const Report = () => {
   if (!formData) return null;
 
   const sections = generateReport(formData.fullName, formData.dob);
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      await navigator.share({
-        title: `${formData.fullName}'s LifeMap`,
-        text: "Check out my cosmic LifeMap report!",
-        url: window.location.href,
-      }).catch(() => {});
-    }
-  };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -57,6 +48,21 @@ const Report = () => {
         </div>
       </main>
 
+      {/* Ready Message Section */}
+      <section className="relative z-10 py-8 px-4 text-center">
+        <div className="flex items-center justify-center gap-2 text-accent mb-2">
+          <Sparkles className="w-5 h-5" />
+          <span className="font-display font-bold text-lg">Your LifeMap is ready</span>
+          <Sparkles className="w-5 h-5" />
+        </div>
+        <p className="text-muted-foreground text-sm">
+          Your cosmic blueprint has been generated. Now it's time to share your insights.
+        </p>
+      </section>
+
+      {/* Share Section - NEW sharing feature */}
+      <ShareSection userName={formData.fullName} url={window.location.href} />
+
       {/* CTA Section */}
       <section className="relative z-10 py-16 px-4 text-center">
         <div className="container max-w-lg mx-auto glass-card p-8">
@@ -64,14 +70,10 @@ const Report = () => {
             Your LifeMap Is Just the Beginning
           </h2>
           <p className="text-muted-foreground text-sm mb-6">
-            Share your cosmic insights or explore another reading.
+            Explore another reading or continue your cosmic journey.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button onClick={handleShare} className="btn-cosmic text-sm flex items-center justify-center gap-2">
-              <Share2 className="w-4 h-4" />
-              Share Your LifeMap
-            </button>
-            <button onClick={() => navigate("/")} className="btn-cosmic-outline text-sm flex items-center justify-center gap-2">
+            <button onClick={() => navigate("/")} className="btn-cosmic text-sm flex items-center justify-center gap-2">
               <RotateCcw className="w-4 h-4" />
               Generate Another Report
             </button>
